@@ -1,0 +1,53 @@
+<md-toolbar color="primary">
+  Campus Recruitment System
+  <a (click)="logout()" style="position: absolute; right: 23px; top: 18px;cursor:pointer;">
+    <img md-list-avatar src="/assets/logout.png" alt="logout" height="30px">
+  </a>
+</md-toolbar>
+
+<md-tab-group class="admin-tab-container">
+  <md-tab>
+    <template md-tab-label>
+      Student Users
+    </template>
+    <md-list>
+      <div *ngFor="let user of studentUsers ">
+        <md-list-item>
+          <img md-list-avatar src="/assets/document.png" alt="profile picture">
+          <h3 md-line> <b>Email: </b>{{user.useremail}} </h3>
+          <p md-line>
+            <span> <b>Password: </b> {{user.password}} </span>
+          </p>
+          <p md-line>
+            <span> <b>College Name: </b> {{user.collegeName}} </span>
+          </p>
+          <button md-button md-raised-button color="warn" (click)="removeUser(user)" style="position: absolute; right: 23px;"> Remove</button>
+        </md-list-item>
+        <md-divider></md-divider>
+      </div>
+    </md-list>
+  </md-tab>
+
+  <md-tab>
+    <template md-tab-label>
+     Company Users
+    </template>
+
+    <md-list>
+      <div *ngFor="let user of companyUsers">
+        <md-list-item>
+          <img md-list-avatar src="/assets/document.png" alt="profile picture">
+          <h3 md-line> <b>Email: </b>{{user.email}} </h3>
+          <p md-line>
+            <span> <b>Password: </b> {{user.password}} </span>
+          </p>
+          <p md-line>
+            <span> <b>Company Name: </b> {{user.companyName}} </span>
+          </p>
+          <button md-button md-raised-button color="warn" (click)="removeUser(user)" style="position: absolute; right: 23px;"> Remove</button>
+        </md-list-item>
+        <md-divider></md-divider>
+      </div>
+    </md-list>
+  </md-tab>
+</md-tab-group>
