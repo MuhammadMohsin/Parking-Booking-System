@@ -31,7 +31,7 @@ export class LoginComponent {
             this.userAuth = data;
             if(data.role =="user"){
               alert("Go to user");
-              // this.router.navigate(["/jobs"]);
+              this.router.navigate(["/parking"]);
             }
             else{
               alert("Go to admin");

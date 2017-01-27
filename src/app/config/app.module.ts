@@ -13,12 +13,14 @@ import { LoginComponent } from '../components/login.component/login.component';
 import {UserService} from "../services/user.service";
 import {AdminPanelComponent} from "../components/admin.panel.component/admin.panel.component";
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+import {BookParkingComponent} from "../components/book.parking.component/book.parking.component";
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    BookParkingComponent
   ],
   imports: [
     BrowserModule,
