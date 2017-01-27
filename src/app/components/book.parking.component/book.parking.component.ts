@@ -80,8 +80,24 @@ export class BookParkingComponent {
     }
   }
 
-  selectSlot(){
-    console.log(this.locationList1.slots)
+  selectSlot(locationNum, slotObj, ind){
+
+    this.locationList1.slots.forEach(slot=>{
+      if(slot.bookedBy == "")
+          slot.selectable = "";
+    });
+    this.locationList2.slots.forEach(slot=>{
+      if(slot.bookedBy == "")
+        slot.selectable = "";
+    });
+    this.locationList3.slots.forEach(slot=>{
+      if(slot.bookedBy == "")
+        slot.selectable = "";
+    });
+    slotObj.selectable = "true"
+  }
+    saveReservation(){
+    console.log(this.locationList1)
     if(this.parkingObj.parkingDate != null && this.parkingObj.startTime.trim() != "" && this.parkingObj.parkingHrs.trim() != ""){
       console.log(this.parkingObj);
     }
