@@ -57,14 +57,14 @@ export class AdminPanelComponent {
       console.log(this.allUsersList);
 
       let myRes = [];
-      /*this.AllLocations.forEach(function(locations){
+      this.AllLocations.forEach(function(locations){
         locations.slots.forEach(function(slotObj, ind){
-          if(slotObj.bookedBy == authUserKey){
+          if(slotObj.bookedBy != ""){
             console.log(slotObj.bookedBy);
             myRes.push({slot: slotObj, location: locations.$key, ind: ind})
           }
         })
-      });*/
+      });
       this.myReservedParkingList = myRes;
       console.log(this.myReservedParkingList);
 
