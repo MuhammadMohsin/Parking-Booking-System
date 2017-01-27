@@ -163,8 +163,12 @@
       Feedback
     </template>
 
-    <md-card class="signup-container">
+    <md-card>
       <md-card-title> Send Feedback</md-card-title>
+      <textarea [(ngModel)]="feedbackMsg" class="feedback-textarea"></textarea>
+      <br/>
+      <br/>
+      <button md-button md-raised-button color="primary" (click)="sendFeedback()">Send Feedback</button>
       <md-card-content>
 
       </md-card-content>

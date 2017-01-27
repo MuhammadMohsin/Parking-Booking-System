@@ -11,6 +11,7 @@ import {UserService} from '../../services/user.service'
 export class BookParkingComponent {
   userObj = {email: "", password: ""};
   afRef: any;
+  feedbackRef: any;
   userAuth;
   router;
   userService;
@@ -22,6 +23,7 @@ export class BookParkingComponent {
   loadMaps = false;
   myReservedParkingList : any;
   authUserKey: String = "";
+  feedbackMsg = "";
 
   parkingObj = {
     parkingDate: new Date(),
@@ -36,6 +38,7 @@ export class BookParkingComponent {
     this.userService = _userService;
     this.userAuth = this.userService.getUserData();
     let authUserKey =  this.userAuth.$key
+    this.feedbackRef = this.afRef.database.list("feedbacks")
     this.locationsRef = this.afRef.database.list("/locations");
     this.locationsRef.subscribe(locationsList=> {
       this.AllLocations = locationsList;
@@ -182,6 +185,17 @@ export class BookParkingComponent {
     });
   }
 
+  sendFeedback(){
+    if(this.feedbackMsg != "") {
+      this.feedbackRef.push({message: this.feedbackMsg})
+        .then(data=>{
+          this.feedbackMsg = "";
+          alert("Feedback successfully sent to admin");
+        }, err=>{
+          alert(err.message);
+        })
+    }
+  }
   logout() {
     this.userService.logoutUser();
   }
