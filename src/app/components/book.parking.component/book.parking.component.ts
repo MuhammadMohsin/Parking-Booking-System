@@ -123,14 +123,13 @@ export class BookParkingComponent {
         locationNum: locationNum,
         slotInd: ind
       };
-      console.log("pressed")
     }
     else {
       this.selectedSlot = {
         locationNum: "",
         slotInd: ""
       };
-      console.log("pressed")
+      alert("Slot is already taken");
     }
 
   }
@@ -167,7 +166,6 @@ export class BookParkingComponent {
   }
 
   cancelReservation(slotObj){
-    debugger;
     console.log(slotObj);
     let key = slotObj.location+"/slots/"+slotObj.ind;
     this.locationsRef.update(key, {
