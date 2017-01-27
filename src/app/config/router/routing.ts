@@ -7,7 +7,7 @@ import {BookParkingComponent} from "../../components/book.parking.component/book
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/parking',
     pathMatch: 'full'
   },
   {

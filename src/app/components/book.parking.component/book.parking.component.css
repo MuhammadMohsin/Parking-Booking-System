@@ -1,0 +1,46 @@
+.book-parking-container{
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 70px;
+}
+.location1{
+  border: 1px solid black;
+  padding: 10px;
+}
+.location1 > div{
+  height: 70px;
+  width: 35px;
+  border: solid 2px red;
+  display: inline-block;
+  padding: 50px;
+  margin: 20px;
+  cursor: pointer;
+}
+
+.location2{
+  border: 1px solid black;
+  padding: 10px;
+}
+.location2 > div{
+  height: 70px;
+  width: 35px;
+  border: solid 2px red;
+  display: inline-block;
+  padding: 20px;
+  margin: 20px;
+  cursor: pointer;
+  }
+
+.location3{
+  border: 1px solid black;
+  padding: 10px;
+}
+.location3 > div{
+  height: 70px;
+  width: 35px;
+  border: solid 2px red;
+  display: inline-block;
+  padding: 80px;
+  margin: 20px;
+  cursor: pointer;
+}

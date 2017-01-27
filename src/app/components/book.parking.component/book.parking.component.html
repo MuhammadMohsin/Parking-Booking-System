@@ -11,11 +11,97 @@
       Reserve Parking
     </template>
 
-    <md-card class="signup-container">
-      <md-card-title>  Book Parking Slot </md-card-title>
+    <md-card class="book-parking-container">
+      <md-card-title> Book Parking Slot</md-card-title>
       <md-card-content>
 
+        <md-input-container>
+          <h5> Select Date: </h5>
+          <input type="date" md-input #myDate [value]="parkingObj.parkingDate | date:'yyyy-MM-dd'"
+                 (input)="parkingObj.userdate=parseDate($event.target.value)"/>
+        </md-input-container>
+
+        <br/>
+        <br/>
+        <br/>
+
+        <md-select placeholder="Select Start Time" [(ngModel)]="parkingObj.startTime">
+          <md-option value="8AM">8AM</md-option>
+          <md-option value="9AM">9AM</md-option>
+          <md-option value="10AM">10AM</md-option>
+          <md-option value="11AM">11AM</md-option>
+          <md-option value="12PM">12PM</md-option>
+          <md-option value="1PM">1PM</md-option>
+          <md-option value="2PM">2PM</md-option>
+          <md-option value="3PM">3PM</md-option>
+          <md-option value="4PM">4PM</md-option>
+          <md-option value="5PM">5PM</md-option>
+          <md-option value="6PM">6PM</md-option>
+          <md-option value="7PM">7PM</md-option>
+          <md-option value="8PM">8PM</md-option>
+          <md-option value="9PM">9PM</md-option>
+          <md-option value="10PM">10PM</md-option>
+          <md-option value="11PM">11PM</md-option>
+          <md-option value="12PM">12AM</md-option>
+        </md-select>
+
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+
+        <md-select placeholder="Select Hours" [(ngModel)]="parkingObj.parkingHrs">
+          <md-option value="1">1</md-option>
+          <md-option value="2">2</md-option>
+          <md-option value="3">3</md-option>
+          <md-option value="4">4</md-option>
+          <md-option value="5">5</md-option>
+          <md-option value="6">6</md-option>
+          <md-option value="7">7</md-option>
+          <md-option value="8">8</md-option>
+          <md-option value="9">9</md-option>
+          <md-option value="10">10</md-option>
+          <md-option value="11">11</md-option>
+          <md-option value="12">12</md-option>
+        </md-select>
+
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+
+        <md-select placeholder="Select Location" [(ngModel)]="parkingObj.location">
+          <md-option value="location1">location1</md-option>
+          <md-option value="location2">location2</md-option>
+          <md-option value="location3">location3</md-option>
+
+        </md-select>
+
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+
+        <div *ngIf="loadMaps">
+          <div class="location1" *ngIf="parkingObj.location == 'location1'">
+            <div *ngFor="let slot of locationList1.slots">{{slot.name}}</div>
+          </div>
+
+          <div class="location2" *ngIf="parkingObj.location == 'location2'">
+            <div *ngFor="let slot of locationList2.slots">{{slot.name}}</div>
+          </div>
+
+          <div class="location3" *ngIf="parkingObj.location == 'location3'">
+            <div *ngFor="let slot of locationList3.slots">{{slot.name}}</div>
+          </div>
+        </div>
       </md-card-content>
+
+      <md-card-actions class="text-right padding-right-20 padding-bottom-10">
+        <span class="example-spacer"></span>
+        <button md-button md-raised-button color="primary" (click)="selectSlot()">Select Slot</button>
+      </md-card-actions>
+
     </md-card>
   </md-tab>
 
@@ -25,7 +111,7 @@
     </template>
 
     <md-card class="signup-container">
-      <md-card-title>  View Your History </md-card-title>
+      <md-card-title> View Your History</md-card-title>
       <md-card-content>
 
       </md-card-content>
@@ -38,7 +124,7 @@
     </template>
 
     <md-card class="signup-container">
-      <md-card-title>  Cancel Reservation </md-card-title>
+      <md-card-title> Cancel Reservation</md-card-title>
       <md-card-content>
 
       </md-card-content>
@@ -51,7 +137,7 @@
     </template>
 
     <md-card class="signup-container">
-      <md-card-title>  Send Feedback </md-card-title>
+      <md-card-title> Send Feedback</md-card-title>
       <md-card-content>
 
       </md-card-content>
