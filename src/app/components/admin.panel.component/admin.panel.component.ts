@@ -25,7 +25,7 @@ export class AdminPanelComponent {
   loadMaps = false;
   myReservedParkingList : any;
   authUserKey: String = "";
-  feedbackMsg = "";
+  feedbackMsgList;
 
   parkingObj = {
     parkingDate: new Date(),
@@ -41,6 +41,9 @@ export class AdminPanelComponent {
     this.userAuth = this.userService.getUserData();
     let authUserKey =  this.userAuth.$key;
     this.feedbackRef = this.afRef.database.list("/feedbacks");
+    this.feedbackRef.subscribe(feeds=>{
+      this.feedbackMsgList = feeds;
+    });
     this.locationsRef = this.afRef.database.list("/locations");
     this.allUsersListRef = this.afRef.database.list("/users");
     this.allUsersListRef.subscribe(users=>{ this.allUsersList = users;});
@@ -187,18 +190,6 @@ export class AdminPanelComponent {
     }, err=>{
       alert(err.message)
     });
-  }
-
-  sendFeedback(){
-    if(this.feedbackMsg != "") {
-      this.feedbackRef.push({message: this.feedbackMsg})
-        .then(data=>{
-          this.feedbackMsg = "";
-          alert("Feedback successfully sent to admin");
-        }, err=>{
-          alert(err.message);
-        })
-    }
   }
 
   deleteUser(userObj){

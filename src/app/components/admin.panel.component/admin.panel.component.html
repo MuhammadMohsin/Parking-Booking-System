@@ -158,17 +158,21 @@
 
   <md-tab>
     <template md-tab-label>
-      Feedback
+      Feedbacks
     </template>
 
     <md-card>
-      <md-card-title> Send Feedback</md-card-title>
-      <textarea [(ngModel)]="feedbackMsg" class="feedback-textarea"></textarea>
-      <br/>
-      <br/>
-      <button md-button md-raised-button color="primary" (click)="sendFeedback()">Send Feedback</button>
+      <md-card-title> View Feedback</md-card-title>
       <md-card-content>
-
+        <md-list>
+          <div *ngFor="let feedObj of feedbackMsgList">
+            <md-list-item>
+              <img md-list-avatar src="/assets/profile.png" alt="profile picture" height="60">
+              <h1 md-line> <b>Message : </b> {{feedObj.message}} </h1>
+            </md-list-item>
+            <md-divider></md-divider>
+          </div>
+        </md-list>
       </md-card-content>
     </md-card>
   </md-tab>
