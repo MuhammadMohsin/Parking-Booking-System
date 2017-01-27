@@ -96,6 +96,11 @@ export class BookParkingComponent {
   parseDate(dateString: string): Date {
     if (dateString) {
       let date = new Date(dateString);
+      if(new Date() > date){
+        alert("Please Enter Correct ");
+        this.parkingObj.parkingDate = new Date();
+        return null;
+      }
       console.log(date);
       return date;
     } else {

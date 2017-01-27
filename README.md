@@ -1,7 +1,7 @@
-# ParkingSystem
+# Parking System
 
 <br />
-Click [here](https://campus-recruitment.firebaseapp.com/) to check this app on firebase.
+Click [here](https://parking-system-e5c6d.firebaseapp.com) to check this app on firebase.
 <br />
 ### Admin account <br/>
 Email: admin@gmail.com  <br/>
