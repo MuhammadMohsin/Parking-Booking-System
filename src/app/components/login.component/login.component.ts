@@ -30,12 +30,10 @@ export class LoginComponent {
             this.userService.setUserData(data);
             this.userAuth = data;
             if(data.role =="user"){
-              alert("Go to user");
               this.router.navigate(["/parking"]);
             }
             else{
-              alert("Go to admin");
-              // this.router.navigate(["/admin"])
+              this.router.navigate(["/admin"])
             }
           });
 
