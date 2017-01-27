@@ -51,10 +51,10 @@ export class BookParkingComponent {
 
       let myRes = [];
       this.AllLocations.forEach(function(locations){
-        locations.slots.forEach(function(slotObj){
+        locations.slots.forEach(function(slotObj, ind){
           if(slotObj.bookedBy == authUserKey){
             console.log(slotObj.bookedBy);
-            myRes.push({slot: slotObj, location: locations.$key})
+            myRes.push({slot: slotObj, location: locations.$key, ind: ind})
           }
         })
       });
@@ -166,6 +166,23 @@ export class BookParkingComponent {
     }
   }
 
+  cancelReservation(slotObj){
+    debugger;
+    console.log(slotObj);
+    let key = slotObj.location+"/slots/"+slotObj.ind;
+    this.locationsRef.update(key, {
+      bookedBy: "",
+      parkingData : "",
+      parkingHrs: "",
+      startTime: "",
+
+    }).then(data=>{
+      console.log(data);
+      alert("reservation canceled successfully")
+    }, err=>{
+      alert(err.message)
+    });
+  }
 
   logout() {
     this.userService.logoutUser();

@@ -139,7 +139,21 @@
     <md-card class="signup-container">
       <md-card-title> Cancel Reservation</md-card-title>
       <md-card-content>
-
+        <md-list>
+          <div *ngFor="let slotInfo of myReservedParkingList">
+            <md-list-item>
+              <img md-list-avatar src="/assets/car.png_256" alt="profile picture" class="car-logo">
+              <h1 md-line> <b>Location Map:  {{slotInfo.location}} </b> </h1>
+              <h1 md-line> <b>Reservation Date :  {{slotInfo.slot.parkingData}} </b> </h1>
+              <h3 md-line> <b>Reservation Start Time: </b>{{slotInfo.slot.startTime }} </h3>
+              <p md-line>
+                <span> <b>Reservation Hours: </b> {{slotInfo.slot.parkingHrs}} </span>
+              </p>
+              <button md-button md-raised-button color="warn" (click)="cancelReservation(slotInfo)" style="position: absolute; right: 23px;"> Cancel</button>
+            </md-list-item>
+            <md-divider></md-divider>
+          </div>
+        </md-list>
       </md-card-content>
     </md-card>
   </md-tab>
