@@ -84,15 +84,15 @@
 
         <div *ngIf="loadMaps">
           <div class="location1" *ngIf="parkingObj.location == 'location1'">
-            <div *ngFor="let slot of locationList1.slots; let ind = index" [ngClass]="{changeBg: slot.selectable}" (click)="selectSlot(0, slot, ind)">{{slot.name}}</div>
+            <div *ngFor="let slot of locationList1.slots; let ind = index" [ngClass]="{changeBg: slot.selectable, alreadyReserved: (slot.bookedBy != '')}" (click)="selectSlot(1, slot, ind)">{{slot.name}}</div>
           </div>
 
           <div class="location2" *ngIf="parkingObj.location == 'location2'">
-            <div *ngFor="let slot of locationList2.slots; let ind = index" [ngClass]="{changeBg: slot.selectable}" (click)="selectSlot(1, slot, ind)">{{slot.name}}</div>
+            <div *ngFor="let slot of locationList2.slots; let ind = index" [ngClass]="{changeBg: slot.selectable, alreadyReserved: (slot.bookedBy != '')}" (click)="selectSlot(2, slot, ind)">{{slot.name}}</div>
           </div>
 
           <div class="location3" *ngIf="parkingObj.location == 'location3'">
-            <div *ngFor="let slot of locationList3.slots; let ind = index" [ngClass]="{changeBg: slot.selectable}" (click)="selectSlot(2, slot, ind)">{{slot.name}}</div>
+            <div *ngFor="let slot of locationList3.slots; let ind = index" [ngClass]="{changeBg: slot.selectable, alreadyReserved: (slot.bookedBy != '')}" (click)="selectSlot(3, slot, ind)">{{slot.name}}</div>
           </div>
         </div>
       </md-card-content>

@@ -47,3 +47,7 @@
 .changeBg{
   background-color: yellow;
 }
+.alreadyReserved{
+  background-color: maroon;
+  cursor: not-allowed !important;
+}
