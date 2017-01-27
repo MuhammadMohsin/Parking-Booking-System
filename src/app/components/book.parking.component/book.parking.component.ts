@@ -15,11 +15,13 @@ export class BookParkingComponent {
   router;
   userService;
   locationsRef;
-  AllLocations;
+  AllLocations = [];
   locationList1;
   locationList2;
   locationList3;
   loadMaps = false;
+  myReservedParkingList : any;
+  authUserKey: String = "";
 
   parkingObj = {
     parkingDate: new Date(),
@@ -33,6 +35,7 @@ export class BookParkingComponent {
     this.router = _router;
     this.userService = _userService;
     this.userAuth = this.userService.getUserData();
+    let authUserKey =  this.userAuth.$key
     this.locationsRef = this.afRef.database.list("/locations");
     this.locationsRef.subscribe(locationsList=> {
       this.AllLocations = locationsList;
@@ -41,7 +44,23 @@ export class BookParkingComponent {
       this.locationList2 = this.AllLocations[1];
       this.locationList3 = this.AllLocations[2];
 
+      this.myReservedParkingList = [];
       this.loadMaps = true;
+
+      console.log(this.AllLocations);
+
+      let myRes = [];
+      this.AllLocations.forEach(function(locations){
+        locations.slots.forEach(function(slotObj){
+          if(slotObj.bookedBy == authUserKey){
+            console.log(slotObj.bookedBy);
+            myRes.push({slot: slotObj, location: locations.$key})
+          }
+        })
+      });
+      this.myReservedParkingList = myRes;
+      console.log(this.myReservedParkingList);
+
     });
   }
 
@@ -146,6 +165,7 @@ export class BookParkingComponent {
       alert("Please fill all fields");
     }
   }
+
 
   logout() {
     this.userService.logoutUser();

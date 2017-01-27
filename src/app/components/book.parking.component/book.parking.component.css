@@ -51,3 +51,7 @@
   background-color: maroon;
   cursor: not-allowed !important;
 }
+.car-logo{
+  height: 44px;
+  width: 80px;
+}
